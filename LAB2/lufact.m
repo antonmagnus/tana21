@@ -33,7 +33,7 @@ function [L,U,P] = lufact(A)
       i = j+1:n; % indices for the "active" matrix portion
       A(i,j) = A(i,j)/A(j,j);
       A(i,i) = A(i,i) - A(i,j)*A(j,i);
-%      A, return
+      %A, return
    end
 %%
 % Extract L and U from the in-place form
