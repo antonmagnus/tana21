@@ -1,4 +1,4 @@
-function [x,k] = gaussSeidel(A,b,x0,tol)
+function [x,k] = sor(A,b,x0,w,tol)
 %%
 %  Gauss-Seidel iterative method to approximate the solution of a
 %  linear system Ax=b up to a user defined tolerance
@@ -21,25 +21,26 @@ function [x,k] = gaussSeidel(A,b,x0,tol)
 %  notes on page 46)
 %
 %%
-    max_its = 250;
+    max_its = 22000;
     x = x0;
-    x_old = x0;
+   % x_old = x0;
     for k = 1:max_its
         for i = 1:n
+            %x_old = x(i);
             sum = 0;
             for j = 1:n
                 if j~=i
                     sum = sum + A(i,j)*x(j);
                 end
             end
-            x_old = x;
-            x(i) = (b(i) -sum)/A(i,i);
+            x(i) = (1-w)*x(i) + (w/A(i,i))*(b(i) -sum);
+            %x(i) = (b(i) -sum)/A(i,i);
         end
-        %r = b-A*x;
-        %if norm(r)< (tol * norm(b))
-        %    break;
-        if 
+        r = b-A*x;
+        if norm(r)< (tol * norm(b))
             break;
+        %if ((norm(x-x_old)) / (norm(x))) < tol
+        %    break;
         end
     end
 end

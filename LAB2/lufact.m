@@ -23,11 +23,12 @@ function [L,U,P] = lufact(A)
    for j = 1:n-1
 %%
 % Find the index of the largest pivot element in the current column
+[maxVal,k] = max((abs(A(:,j))))
 
 %%
 % Swap the rows within the in-place array as well as the permutation matrix P
-
-
+A([k j],:) = A([j k],:)
+P([j k],:) = P([k j],:)
 %%
 % Perform the in-place elimination and save the new column of L
       i = j+1:n; % indices for the "active" matrix portion
