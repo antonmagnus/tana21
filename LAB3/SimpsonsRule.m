@@ -40,15 +40,20 @@ function [S,x] = SimpsonsRule(f,a,b,n)
     %%
     %  build the set of uniformly spaced quadrature nodes
     x = zeros(n+1,1);
-
+    
     x(1) = f(a);
-    x(2) = 4*f((b+a)/2);
-    x(3) = f(b);
-
-    %for i = 1:n+1
-    % TODO: Later for composite
-    %end
-
+    x(n+1) = f(b);
+    for i = 2:n
+        x_i = a + ((i-1) * h);
+       if mod(i,2) == 0
+           %
+           x(i) = 4*f(x_i);
+       else 
+           %
+           x(i) = 2*f(x_i);
+       end
+       
+    end
 
     %%
     %  Initialize the integral value to zero

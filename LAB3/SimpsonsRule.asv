@@ -35,14 +35,28 @@ function [S,x] = SimpsonsRule(f,a,b,n)
     end
     %%
     %  Find the interval spacing h
-    h = (b + a) / 2;
+    h = (b - a) / n;
 
     %%
     %  build the set of uniformly spaced quadrature nodes
     x = zeros(n+1,1);
-
+    
     x(1) = f(a);
-    x(2) = 4*f(h);
+    x_n = a + n * h;
+    f(n+1) = x_n;
+    for i = 2:n
+       if mod(i,2) == 0
+           %
+           
+       else 
+           %
+           
+       end
+       
+    end
+
+    
+    x(2) = 4*f((b+a)/2);
     x(3) = f(b);
 
     %for i = 1:n+1
