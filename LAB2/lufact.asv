@@ -27,7 +27,7 @@ function [L,U,P] = lufact(A)
 
 index = j;
 maxVal = 0;
-for i = j:n
+for i = j:n-1
     magnitude = abs(A(i,j));
     if  magnitude > maxVal
         index = i;
