@@ -30,7 +30,6 @@ function [t,y] = RungeKutta4(f,t0,T,y0,h)
     %%
     %  use Runge-Kutta 4 stage with the given timestep h to solve the problem and
     %  save the information for later analysis
-    y_old = y0;
     for j = 2:length(t)
         k1 = f(t(j-1),y(j-1));
         k2 = f(t(j-1) + h/2, y(j-1) + (h/2) * k1);
