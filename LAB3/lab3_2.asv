@@ -1,0 +1,11 @@
+
+xv_1 = [-1,0,1];
+ = [2,0,2];
+
+f2(1,:) =[-1,0,1,1.5];
+f2(2,:) = [-6,-3,0,3.375];
+
+[L_i] = Lagrange_interpolation(2,f2);
+
+[X,L]
+plot(X,func1(X),'-k',X,L,'--r',xVals,yVals,'rd','MarkerFaceColor','r','MarkerSize',7)
