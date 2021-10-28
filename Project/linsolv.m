@@ -70,12 +70,23 @@ end
 
 % The following code was only used to find an optimal relaxation parameter
 
-%save = zeros(1,1);
-%count = 1;
-%t = [];
-%for w = 1:0.01:2
-%    [t,k] = sor(a,b,zeros(n-2,1),w,tol);
-%    save(1,count) = k;
-%    save(2,count) = w;
-%    count = count+1;
-%end
+save = zeros(1,1);
+count = 1;
+t = [];
+for w = 1:0.01:2
+    [t,k] = sor(a,b,zeros(n-2,1),w,tol);
+    save(1,count) = k;
+    save(2,count) = w;
+    count = count+1;
+end
+
+x = save(2,:);
+y = save(1,:);
+
+plot(x,y);
+
+
+
+
+
+
